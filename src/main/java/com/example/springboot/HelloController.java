@@ -2,7 +2,7 @@ package com.example.springboot;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+// import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 @RestController
 public class HelloController {
