@@ -18,6 +18,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/", "/home").permitAll()
+				//remove following line in production (.antMatchers("/h2-console/**").permitAll())
+				.antMatchers("/h2-console/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
@@ -26,6 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.logout()
 				.permitAll();
+			
+			// remove the following two configuration lines in production (csrf().disable(); & headers().frameOptions().disable();)
+			http.csrf().disable();
+			http.headers().frameOptions().disable();
+
 	}
 
 	@Bean
@@ -40,4 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		return new InMemoryUserDetailsManager(user);
 	}
+	
+	// remove in production -- allows access to h2 console in production
+
 }

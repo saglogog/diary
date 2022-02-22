@@ -13,11 +13,16 @@ repositories {
 }
 
 dependencies {
-	compileOnly("org.springframework.boot:spring-boot-devtools")
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.security:spring-security-test'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	// added to allow remote creation of database
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// added to be able to interact with database; not sure if the jdbc dependency is needed when I added JPA
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
